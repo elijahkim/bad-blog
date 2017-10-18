@@ -1,0 +1,15 @@
+<h1>Log In</h1>
+
+<%= form_for @changeset, session_path(@conn, :create), fn f -> %>
+  <div>
+    <%= label(f, :username) %>
+    <%= text_input(f, :username) %>
+  </div>
+
+  <div>
+    <%= label(f, :password) %>
+    <%= password_input(f, :password) %>
+  </div>
+
+  <%= submit("Log in") %>
+<% end %>

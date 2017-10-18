@@ -1,0 +1,8 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+
+<h2>Comments</h2>
+
+<%= for comment <- @post.comments do %>
+  <p>comment.content</p>
+<% end %>

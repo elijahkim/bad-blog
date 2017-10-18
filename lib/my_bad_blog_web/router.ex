@@ -5,8 +5,7 @@ defmodule MyBadBlogWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
-    plug :protect_from_forgery
-    plug :put_secure_browser_headers
+    plug MyBadBlogWeb.Plugs.CurrentUser
   end
 
   pipeline :api do
@@ -17,6 +16,11 @@ defmodule MyBadBlogWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/sessions", SessionController
+    resources "/posts", PostController, only: [:show] do
+      resources "/comments", CommentController, only: [:new]
+    end
+    resources "/comments", CommentController, only: [:create]
   end
 
   # Other scopes may use custom stacks.
